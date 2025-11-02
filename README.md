@@ -7,6 +7,7 @@ This is a repo for storing my keyboard layouts.
 # Layout
 
 A simple 34 key layout with home row mods, combos and total of 3 layers.
+QMK layout supports timeout where it resets to layer 0 after set time.
 
 ![Layer 1](images/vial/layer1.png)
 ![Layer 2](images/vial/layer2.png)
