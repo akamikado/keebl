@@ -21,11 +21,11 @@ void clicked(void) {
 
 void turned(bool clockwise) {
     if (IS_LAYER_ON(0)) {
-        tap_code(clockwise ? KC_VOLU : KC_VOLD);
+        tap_code(clockwise ? KC_VOLD : KC_VOLU);
     } else if (IS_LAYER_ON(1)) {
-        tap_code(clockwise ? KC_MNXT : KC_MPRV);
+        tap_code(clockwise ? KC_MPRV : KC_MNXT);
     } else if (IS_LAYER_ON(2)) {
-        tap_code(clockwise ? KC_BRIU : KC_BRID);
+        tap_code(clockwise ? KC_BRID : KC_BRIU);
     }
 }
 
