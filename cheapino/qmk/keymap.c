@@ -96,7 +96,17 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 #define IDLE_TIMEOUT_MS 5000
 
 static uint32_t reset_layer(uint32_t trigger_time, void* cb_arg) {
-  layer_move(0);
+  switch (layer_state) {
+    case 1:
+    case 2:
+      layer_move(0);
+      break;
+    // TODO: (BUG) It doesn't reset to layer 3
+    case 4:
+    case 5:
+      layer_move(3);
+      break;
+  }
   return 0;
 }
 
