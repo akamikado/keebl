@@ -25,27 +25,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          TO(1),   KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, TO(0)
        ),
 
-    // Fire Layout
-    [3] = LAYOUT_split_3x5_3(
-       KC_P,         KC_L,         KC_D,         KC_G,          KC_V,        KC_Q,  KC_F,         KC_O,         KC_U,         KC_COMM,
-       LALT_T(KC_N), LGUI_T(KC_R), LSFT_T(KC_T), LCTL_T(KC_S),  KC_Y,        KC_J,  RCTL_T(KC_H), RSFT_T(KC_A), RGUI_T(KC_E), RALT_T(KC_I),
-       KC_X,         KC_K,         KC_C,         KC_W,          KC_Z,        KC_B,  KC_M,         KC_QUOT,      KC_SCLN,       KC_DOT,
-                                   TO(4),        KC_BSPC,       TO(0),       KC_NO, KC_SPC,       KC_ENT
-       ),
-
-    [4] = LAYOUT_split_3x5_3(
-       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,        KC_6,      KC_7,    KC_8,    KC_9,    KC_0,
-       KC_LALT, KC_LGUI, KC_LSFT, KC_LCTL, KC_TAB,      KC_DELETE, KC_RCTL, KC_RSFT, KC_RGUI, KC_RALT,
-       KC_NO,   KC_GRV,  KC_MINS, KC_EQL,  KC_SLSH,     KC_LBRC,   KC_RBRC, KC_BSLS, KC_NO,   KC_NO,
-                         TO(4),   KC_TRNS, KC_TRNS,     KC_TRNS,   KC_TRNS, TO(3)
-       ),
-
-    [5] = LAYOUT_split_3x5_3(
-       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8, KC_F9,    KC_F10,
-       KC_LALT, KC_LGUI, KC_LSFT, KC_LCTL, KC_NO,        KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_NO,
-       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,        KC_NO,   KC_NO,   KC_NO, KC_NO,    KC_NO,
-                         TO(4),   KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, TO(3)
-       ),
     };
 
 
@@ -64,9 +43,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
 const uint16_t PROGMEM to2_layer0[] = {KC_ENT, TO(1), COMBO_END};
 const uint16_t PROGMEM to2_default[] = {TO(0), TO(1), COMBO_END};
 
-const uint16_t PROGMEM to5_layer3[] = {KC_ENT, TO(4), COMBO_END};
-const uint16_t PROGMEM to5_default[] = {TO(3), TO(4), COMBO_END};
-
 const uint16_t PROGMEM spc_bspc_esc[] = {KC_BSPC, KC_SPC, COMBO_END};
 
 const uint16_t PROGMEM f11[] = {KC_F1, KC_F10, COMBO_END};
@@ -75,9 +51,6 @@ const uint16_t PROGMEM f12[] = {KC_F2, KC_F10, COMBO_END};
 combo_t key_combos[] = {
   COMBO(to2_layer0, TO(2)),
   COMBO(to2_default, TO(2)),
-
-  COMBO(to5_layer3, TO(5)),
-  COMBO(to5_default, TO(5)),
 
   COMBO(spc_bspc_esc, KC_ESC),
 
@@ -100,11 +73,6 @@ static uint32_t reset_layer(uint32_t trigger_time, void* cb_arg) {
     case 1:
     case 2:
       layer_move(0);
-      break;
-    // TODO: (BUG) It doesn't reset to layer 3
-    case 4:
-    case 5:
-      layer_move(3);
       break;
   }
   return 0;
